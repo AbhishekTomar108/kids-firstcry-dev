@@ -19,9 +19,7 @@ export default function ProductCheckOut() {
     city:"",
     state:"",
     zipCode:""
-  })
-
- 
+  }) 
 
   const [productData, setproductData] = useState();
   const [amount, setAmount]  =useState(0);
@@ -29,11 +27,17 @@ export default function ProductCheckOut() {
   const [updateAddressStatus, setupdateAddressStatus]  =useState(false);
   const [addressId, setaddressId]  = useState();
   const editBtn = useRef()
+  const [deliveryDate, setDeliveryDate]  =useState()
 
 
   useEffect(()=>{
 
     checkUserAddress()
+
+    let date = getDateAfterFiveDays()
+    
+
+    setDeliveryDate(date.toLocaleDateString())
 
     const dataproduct = JSON.parse(localStorage.getItem('productCartData'))
     setproductData(dataproduct)
@@ -79,6 +83,19 @@ export default function ProductCheckOut() {
 catch{
   console.log("sorry there is some error occured")  
 }
+}
+
+
+function getDateAfterFiveDays() {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Add 5 days to the current date
+  const dateAfterFiveDays = new Date(currentDate);
+  dateAfterFiveDays.setDate(currentDate.getDate() + 5);
+
+  // Return the result
+  return dateAfterFiveDays;
 }
 
 const updateAddress = async()=>{
@@ -255,9 +272,10 @@ const loadScript = (src)=>{
 
 
 const submitOrder = async(amount)=>{
+
   console.log('submit running')
 
-  const data = await fetch('https://commerce-backend-test.onrender.com/api/product/productcartsaved',{
+  const data = await fetch('http://localhost:5000/api/product/productcartsaved',{
     method:'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -270,10 +288,10 @@ const submitOrder = async(amount)=>{
 
    console.log('saved data =',savedData)
    alert('product has been placed')
+
   //  navigate('/')
    
-  //  paymentfunc(amount*100)
-  
+  //  paymentfunc(amount*100)  
 
 }
 
@@ -429,6 +447,11 @@ const submitOrder = async(amount)=>{
                   <div className="d-flex justify-content-between mt-2">
                     <h5>Total</h5>
                     <h5>{amount+10} &#x20B9;</h5>
+                  </div>
+
+                  <div className="d-flex justify-content-between mt-2">
+                    <h5>Expected Delivery Date</h5>
+                    <h5>{deliveryDate}</h5>
                   </div>
                 </div>
               </div>

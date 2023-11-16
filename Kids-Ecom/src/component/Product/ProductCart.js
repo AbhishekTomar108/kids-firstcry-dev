@@ -29,7 +29,7 @@ export default function ProductCart() {
     let total  = productPrice*1;
    
     total  = totalAmount+total;
-    settotalAmount(Math.trunc(total))
+    // settotalAmount(Math.trunc(total))
     console.log(await data.json())
  
   
@@ -55,7 +55,7 @@ const removeItem = async(index,productPrice)=>{
     console.log(productPrice)
     total  = totalAmount-total;
    
-    settotalAmount(Math.trunc(total))
+    // settotalAmount(Math.trunc(total))
     console.log(await data.json())
     
     
@@ -64,9 +64,9 @@ const removeItem = async(index,productPrice)=>{
 
 const removeProduct = (Index,totalPrice)=>{
 
-  fetch(`https://commerce-backend-test.onrender.com/api/product/removeproductcart/${userProductData[Index]._id}`,
-  {method: 'POST',}
-  )
+  // fetch(`https://commerce-backend-test.onrender.com/api/product/removeproductcart/${userProductData[Index]._id}`,
+  // {method: 'POST',}
+  // )
   console.log('product id =',userProductData[Index]._id)
  
   const productData = [...userProductData]
@@ -164,8 +164,7 @@ const updateTotalAmount =(productData)=>{
 
                   return(     
                       <tr key={index}>
-                  <td className="align-middle">{data.
-productName}</td>
+                  <td className="align-middle">{data.productName}</td>
                   <td className="align-middle">{data.productPrice}</td>
                   <td className="align-middle">
                     <div className="input-group quantity mx-auto" style={{width: '110px',alignItems:'center'}}>

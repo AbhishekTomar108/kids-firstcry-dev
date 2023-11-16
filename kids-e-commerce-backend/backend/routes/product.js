@@ -197,27 +197,74 @@ router.post('/updateproductcart/:id', async (req,res)=>
 
 router.post('/productcartsaved',fetchuser, async(req,res)=>{
 
+  const savedproductdata =  await Promise.all(req.body.productCart.map(async(data)=>{
 
-   const savedproductdata =  await Promise.all(req.body.productCart.map(async(data)=>{
+   const referenceId = generateReference()
+   const productName = data.productName;
+   const productId = data.productId;
+   const totalItem = data.totalItem;
+   const productPrice =  data.productPrice;
+   const deliveryDate = req.body.deliveryDate
+
+   console.log('inside map',referenceId)
+
+   const saved  = await savedProductCart.create({
+     productName,
+     totalItem,
+     productPrice,
+     referenceId,
+     deliveryDate,
+     productId,
+     user: req.user.id
+   })
+
+  //  const removeProduct = await ProductCart.findOneAndDelete({user:req.user.id,productId:productId})
+
+   return saved
+ }))
+ 
+ res.send(savedproductdata)
+
+})
 
 
-    const productName = data.productName;
-    const totalItem = data.totalItem;
-    const productPrice =  data.productPrice;
+// function to generate Reference Number
 
-    console.log('inside map',data.productName )
+function generateReference() {
+ const currentDate = new Date();
+ 
+ // Extract components of the date and time
+ const year = currentDate.getFullYear();
+ const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+ const day = String(currentDate.getDate()).padStart(2, '0');
+ const hours = String(currentDate.getHours()).padStart(2, '0');
+ const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+ const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+ 
+ // Create a reference string using the components
+ const reference = `${year}${month}${day}${hours}${minutes}${seconds}`;
+ 
+ return reference;
+}
 
-    const saved  = await savedProductCart.create({
-      productName,
-      totalItem,
-      productPrice,
-      user: req.user.id
-    })
-    return saved
-  }))
-  
-  res.send(savedproductdata)
+// ROUTE - fetch user placed product
 
+router.get('/fetchalluserplacedproduct',fetchuser, async (req,res)=>
+{
+
+    try
+    {
+   const productCart  = await savedProductCart.find({user:req.user.id})
+   
+   res.json({"success":true, productCart:productCart});
+    }
+    
+    catch(error)
+    {
+        console.error(error.message)
+        res.send({"error":error.message})
+    }
+    // res.json([])
 })
 
 router.post('/payment',async(req,res)=>{

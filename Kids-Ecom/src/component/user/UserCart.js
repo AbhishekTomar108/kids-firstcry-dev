@@ -25,7 +25,7 @@ const UserCart = () => {
   //     </div>
   //   </div> 
   <ProductCart/>
-    :<div className='container'  style={{textAlign:"center", marginTop:"20px"}}> Please Login to see the Cart</div>}
+    :<div className='container'  style={{textAlign:"center", marginTop:"20px"}}> Please Login to see the Cart </div>}
     </div>
   )
 }

@@ -8,15 +8,22 @@ const savedProductCartSchema = new Schema({
     },
     productName: {
         type: String,
-        required: true
+    },
+    referenceId: {
+        type: String,
+    },
+    productId: {
+        type: String,
     },
     totalItem: {
         type: Number,
-        required: true
+        
     },
     productPrice: {
         type: Number,
-        required: true
+    },
+    deliveryDate: {
+        type: String,
     },
     date: {
         type: Date,

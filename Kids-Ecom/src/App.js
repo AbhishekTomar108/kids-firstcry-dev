@@ -33,6 +33,7 @@ import UserCart from './component/user/UserCart';
 import ShopByAge from './component/ShopByAge';
 import ShopByCategory from './component/ShopByCategory';
 import AddCommerceData from './component/AddCommerceData';
+import PlacedProduct from './component/Product/PlacedProduct';
 
 
 
@@ -60,6 +61,7 @@ function App() {
         <Route  exact path="/rewards" element={<Product/>}/>
         <Route  exact path="/productdetails" element={<ProductDetails/>}/>
         <Route  exact path="/productcart" element={<ProductCart/>}/>
+        <Route  exact path="/placedproduct" element={<PlacedProduct/>}/>
         <Route  exact path="/proceedtocheckout" element={<ProductCheckOut/>}/>
         <Route  exact path="/" element={[<Banner/>, <ShopByAge/>, <ShopByCategory/>, <Bestseller/>,<Category/>,<ReadMore/>, <Press/>,<Customers/>]}/>
         {/* <Route  exact path="/" element={<AddCommerceData/>}/> */}

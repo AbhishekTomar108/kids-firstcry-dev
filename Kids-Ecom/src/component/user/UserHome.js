@@ -12,13 +12,14 @@ const UserHome = () => {
   },[])
 
     const logoutHandle =()=>{
-        localStorage.clear();
+        // localStorage.clear();
         ContextValue.updateproductname('')
-        localStorage.setItem('userStatus',false)
+        // localStorage.setItem('userStatus',false)
         navigate('/');
     }
 
   return (
+
     <div>
     
     { localStorage.getItem('userStatus')==="true" ? <div className='user-detail-conatiner container'>
