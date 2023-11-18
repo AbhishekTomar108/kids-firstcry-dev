@@ -55,7 +55,7 @@ export default function ProductCheckOut() {
   const checkUserAddress = async()=>{
    
     try
-    { const response = await fetch("https://commerce-backend-test.onrender.com/api/auth/checkuseraddress", {
+    { const response = await fetch("http://localhost:5000/api/auth/checkuseraddress", {
        method: 'GET', 
        
        headers: {
@@ -71,8 +71,8 @@ export default function ProductCheckOut() {
       console.log('user status from if=',json.user)
       console.log('address id =', json.user._id)
       setaddressId(json.user._id);
-      setuserDetail(json.user)
-      setuserAddressStatus(true)
+      // setuserDetail(json.user)
+      setuserAddressStatus(false)
      }
 
      else{
@@ -100,7 +100,7 @@ function getDateAfterFiveDays() {
 
 const updateAddress = async()=>{
   console.log('address id from update=', addressId)
-  const data  = await fetch(`https://commerce-backend-test.onrender.com/api/auth/updateaddress/${addressId}`,{
+  const data  = await fetch(`http://localhost:5000/api/auth/updateaddress/${addressId}`,{
     method: 'POST', 
        
     headers: {
@@ -118,9 +118,6 @@ const updateAddress = async()=>{
   setupdateAddressStatus(false)
   editBtn.current.style.display = "block";
   // navigate('/')
-
-  
-
 }
 
 const handleClick = () => {
@@ -298,7 +295,7 @@ const submitOrder = async(amount)=>{
   const submitAddress = async()=>{
     console.log('submit order data =', userDetail)
     try
-    { const response = await fetch("https://commerce-backend-test.onrender.com/api/auth/adduseraddress", {
+    { const response = await fetch("http://localhost:5000/api/auth/adduseraddress", {
        method: 'POST', 
        
        headers: {
@@ -435,7 +432,7 @@ const submitOrder = async(amount)=>{
                 </div>
                 <div className="border-bottom pt-3 pb-2">
                   <div className="d-flex justify-content-between mb-3">
-                    <h6>Subtotal</h6>
+                    <h6>Sub Total</h6>
                     <h6>{amount} &#x20B9;</h6>
                   </div>
                   <div className="d-flex justify-content-between">

@@ -89,7 +89,7 @@ router.get("/products", async (req, res) => {
 
       res.send({"status":true,"review":addReview})
 
-    }
+    } 
     catch(error){
       res.send({"status":false,"error":error.message})
     }
@@ -197,6 +197,24 @@ router.get('/fetchalluserproduct',fetchuser, async (req,res)=>
 })
 
 
+// ROUTE - fetch user placed product
+
+router.get('/fetchalluserplacedproduct',fetchuser, async (req,res)=>
+{
+
+    try{
+   const productCart  = await savedProductCart.find({user:req.user.id})
+   
+   res.json({"success":true, productCart:productCart});
+    }
+    catch(error){
+        console.error(error.message)
+        res.send({"error":error.message})
+    }
+    // res.json([])
+})
+
+
 
 router.get('/products/product', async(req, res) => {
   const searchQuery = req.query; // Get the search query from the request parameters
@@ -276,7 +294,6 @@ router.post('/productcartsaved',fetchuser, async(req,res)=>{
 
 
    const savedproductdata =  await Promise.all(req.body.productCart.map(async(data)=>{
-
 
     const productName = data.productName;
     const totalItem = data.totalItem;

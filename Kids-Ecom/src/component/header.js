@@ -19,7 +19,7 @@ const Header = () => {
 
         
    if(searchitem!==""){
-    fetch(`https://commerce-backend-test.onrender.com/api/product/products/`).then(res=>res.json()).then(data=> {const filteredDtata = data.filter(element=>{ return (element.productname.toLowerCase().includes(searchitem,0) || element.category.toLowerCase().includes(searchitem,0))})
+    fetch(`http://localhost:5000/api/product/products/`).then(res=>res.json()).then(data=> {const filteredDtata = data.filter(element=>{ return (element.productname.toLowerCase().includes(searchitem,0) || element.category.toLowerCase().includes(searchitem,0))})
     
     setfilterData(filteredDtata)
     localStorage.setItem('filterproductData', JSON.stringify(filteredDtata));
@@ -253,7 +253,7 @@ const Header = () => {
                 </div>
                 </div>
                 <div className='y-gap' onClick={()=>ContextValue.updateproductname("all")}><Link to='categories'>Gifts For All Ages</Link></div>
-                <div className='y-gap'><Link to={localStorage.getItem('userStatus')==="true"?'/placedproduct':'/account'}>Placed Product</Link></div>
+                <div className='y-gap'><Link to={'/placedproduct'}>Placed Product</Link></div>
             </div>
 
            

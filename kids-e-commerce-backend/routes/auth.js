@@ -8,10 +8,10 @@ var jwt = require("jsonwebtoken");
 var fetchuser = require('../middleware/fetchuser');
 const sendmail = require('../controller/sendmail')
 
-
 const JWT_SECRET = "mmm";
 
 // Route-1 Create a user using :"POST /api/auth". No Log in required
+
 router.post(
 
   "/",
@@ -20,10 +20,8 @@ router.post(
     body("password", "password cannot be blank").exists(),
     body("name", "please enter correct name").isLength({ min: 5 }),
   ],
-  async (req, res) => {
-
-  
-   
+  async (req, res) => { 
+       
     // if there are error retuen bad request and error
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

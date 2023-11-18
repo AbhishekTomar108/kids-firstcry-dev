@@ -83,7 +83,7 @@ const PlacedProduct = () => {
                   <td className="align-middle">{data.productPrice}</td>
                   <td className="align-middle">
                     {data.totalItem}
-                  </td>
+                  </td> 
                   <td className="align-middle">{data.productPrice*data.totalItem}</td>
                   <td className="align-middle">{new Date(data.date).toLocaleDateString()}</td>
                   <td className="align-middle">{data.deliveryDate}</td>
