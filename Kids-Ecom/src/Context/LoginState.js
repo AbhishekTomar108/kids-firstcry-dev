@@ -13,6 +13,7 @@ const LoginState = (props) => {
     const [filterProduct, setfilterProduct] = useState(false)
     const [filterProductByAge, setfilterProductByAge] = useState(false)
     const [category, setcategory] = useState(false)
+    const [age, setAge] = useState("")
 
   const updateFilterProduct = (value)=>{
 
@@ -38,6 +39,8 @@ const LoginState = (props) => {
       setproductname(data);
     
     }
+
+  
 
     const updateCategory = (data)=>{
       localStorage.setItem( 'category', data );

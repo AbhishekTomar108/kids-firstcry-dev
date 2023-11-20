@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import image1 from "../../images/img-1.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LoginContext from "../../Context/LoginContext";
 import cross from "../../images/cross.png";
 // import image2 from "./image/MusicalTruck_460x.webp";
@@ -9,6 +9,7 @@ import cross from "../../images/cross.png";
 
 export default function ProductList(props) {
   const ContextValue = useContext(LoginContext);
+  const location = useLocation()
 
 
   const [productdetails, setproductdetails] = useState();
@@ -27,7 +28,7 @@ export default function ProductList(props) {
     console.log('useeffect of product list')
 
 
-  }, [ContextValue.productname, ContextValue.filterProduct, ContextValue.filterProductByAge])
+  }, [ContextValue.productname, ContextValue.filterProduct, ContextValue.filterProductByAge,location])
 
   const fetchProductData = async () => {
 
