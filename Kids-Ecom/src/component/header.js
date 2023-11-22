@@ -160,7 +160,7 @@ const Header = () => {
            {filterData && filterData.map((data,index)=>{
             return (
                     
-                <Link to='categories' onClick={()=>{ContextValue.updateFilterProduct(true);setfilterData(null)}}><a target='_blank' className='search_suggestion_line' key={index}>
+                <Link to='categories' onClick={()=>{ContextValue.updateFilterProduct(true);setfilterData(null);}}><a target='_blank' className='search_suggestion_line' key={index}>
                     {data.productname}
                 </a></Link>
          

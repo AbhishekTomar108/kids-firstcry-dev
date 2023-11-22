@@ -87,11 +87,13 @@ const Filter = () => {
                     <img className='drop-down-arrow' onClick={()=>showColor(0)} src={down}/>
                     </div>
                 <ul className='filter-content-section'>
+
                     <li className={ageStatus==="0-1"?"text-dark":""} onClick={()=>{setAgeFilter("0-1"); ContextValue.updateFilterProductByAge(true);setAgeStatus("0-1")}}>0-1 years</li>
                     <li className={ageStatus==="2-1"?"text-dark":""} onClick={()=>{setAgeFilter("2-1"); ContextValue.updateFilterProductByAge(true);setAgeStatus("2-1")}}>1-2 years</li>
                     <li className={ageStatus==="2-3"?"text-dark":""} onClick={()=>{setAgeFilter("2-3"); ContextValue.updateFilterProductByAge(true);setAgeStatus("2-3")}}>2-3 years</li>
                     <li className={ageStatus==="3-4"?"text-dark":""} onClick={()=>{setAgeFilter("3-4"); ContextValue.updateFilterProductByAge(true);setAgeStatus("3-4")}}>3-4 years</li>
                     {/* <li onClick={()=>{setAgeFilter("4+"); ContextValue.updateFilterProductByAge(true)}}>4+ years</li>                   */}
+                
                 </ul>
             </div>
 
