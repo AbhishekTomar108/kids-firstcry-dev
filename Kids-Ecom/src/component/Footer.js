@@ -99,7 +99,7 @@ export default function Footer() {
               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
                 <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                <p><i class="fas fa-home me-3"></i> B 14-15, Udhyog Marg, Block B, Sector 1, Noida, Uttar Pradesh 201301</p>
+                <p><i class="fas fa-home me-3"></i>G-15, Krishna Complex, Sector 31, Noida, Uttar Pradesh, 201301</p>
                 <p>
                   <i class="fas fa-envelope me-3"></i>
                   firstcry@info.com
